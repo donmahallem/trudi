@@ -1,0 +1,7 @@
+node_modules/
+data/
+.nyc_output/
+coverage/
+dist/
+src/config-schema.json
+config.json

@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "dist",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "declaration": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true
+    },
+    "typeAcquisition": {
+        "enable": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "baseUrl": "./src",
+    "exclude": [
+        "node_modules",
+        "src/**/*.spec.ts"
+    ]
+}
