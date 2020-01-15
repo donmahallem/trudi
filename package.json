@@ -1,0 +1,121 @@
+{
+    "name": "@donmahallem/trapeze-api-express-server",
+    "version": "0.0.1",
+    "description": "A server implementation",
+    "main": "dist/cli.js",
+    "types": "dist/index.d.ts",
+    "private": false,
+    "scripts": {
+        "test": "mocha",
+        "start": "npm run build:live",
+        "build:live": "nodemon",
+        "build": "tsc",
+        "build:doc": "node ./node_modules/typedoc/bin/typedoc --out ./tt2/ --mode modules --exclude /**/index ./src/",
+        "test-ci": "nyc npm run test",
+        "lint": "tslint -c tslint.json -p tsconfig-lint.json src/**/*.ts",
+        "lint-fix": "tslint --fix -c tslint.json -p tsconfig-lint.json src/**/*.ts",
+        "docs": "typedoc --options typedoc.json",
+        "api-docs": "apidoc -i ./src/ -o ./docs/api/",
+        "test:lint": "npm run lint",
+        "test:build": "npm run build",
+        "test:unit": "npm run test-ci",
+        "test:docs": "npm run docs",
+        "test:api-docs": "npm run api-docs",
+        "create-config-schema": "typescript-json-schema --out ./src/config-schema.json ./tsconfig-schema.json IServerConfig --include ./src/config.ts --required true",
+        "prepare": "npm run create-config-schema"
+    },
+    "dependencies": {
+        "cors": "~2.8.5",
+        "express": "~4.17.1",
+        "express-jwt": "^5.3.1",
+        "helmet": "~3.21.1",
+        "jsonschema": "~1.2.4",
+        "nconf": "~0.10.0"
+    },
+    "devDependencies": {
+        "@types/chai": "~4.2.3",
+        "@types/cors": "~2.8.6",
+        "@types/helmet": "~0.0.44",
+        "@types/mocha": "~5.2.7",
+        "@types/node": "~12.7.8",
+        "@types/sinon": "~7.0.13",
+        "apidoc": "~0.17.7",
+        "chai": "~4.2.0",
+        "mocha": "~6.2.0",
+        "nodemon": "~1.19.2",
+        "nyc": "~14.1.1",
+        "sinon": "~7.5.0",
+        "supertest": "~4.0.2",
+        "ts-node": "~8.4.1",
+        "tslint": "~5.20.0",
+        "typedoc": "~0.15.0",
+        "typescript": "~3.6.3",
+        "typescript-json-schema": "~0.40.0"
+    },
+    "peerDependencies": {},
+    "nyc": {
+        "include": [
+            "src/*.ts",
+            "src/**/*.ts"
+        ],
+        "exclude": [
+            "typings",
+            "src/**/*.spec.ts",
+            "**/*.d.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "reporter": [
+            "json",
+            "html",
+            "text-summary",
+            "lcov"
+        ],
+        "sourceMap": true,
+        "instrument": true,
+        "all": true
+    },
+    "files": [
+        "dist/*",
+        "src/*"
+    ],
+    "homepage": "https://donmahallem.github.io/TrapezeApiExpressServer/",
+    "author": {
+        "name": "donmahallem",
+        "email": "donmahallem@users.noreply.github.com",
+        "url": "https://github.com/donmahallem"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/donmahallem/TrapezeApiExpressServer/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/donmahallem/TrapezeApiExpressServer.git"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": [
+            "es2017",
+            "es7",
+            "es6",
+            "dom"
+        ],
+        "declaration": true,
+        "outDir": "./dist/",
+        "baseUrl": "./src/",
+        "strict": true,
+        "esModuleInterop": true
+    }
+}
