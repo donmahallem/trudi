@@ -25,10 +25,9 @@
         "prepare": "npm run create-config-schema"
     },
     "dependencies": {
-        "@donmahallem/trapeze-api-express-route": "~1.8.0",
-        "@donmahallem/trapeze-api-types": "~1.4.1",
         "cors": "~2.8.5",
         "express": "~4.17.1",
+        "express-jwt": "^5.3.1",
         "helmet": "~3.21.1",
         "jsonschema": "~1.2.4",
         "nconf": "~0.10.0"
